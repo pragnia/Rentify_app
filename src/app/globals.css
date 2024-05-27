@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.customFont {
+    font-family: 'Lora', sans-serif;
+    font-weight: 300;
+    font-style: italic; 
+    color: black;
+}
+
+.customingFont {
+    font-family: 'Lora', sans-serif;
+    color: #03045e;
+    font-weight: bold; 
+    font-size: 20px;
+}
+
+.customingFont:hover {
+    color: #e500a4; /* Change color on hover */
+    cursor: pointer; /* Change cursor on hover */
+}
