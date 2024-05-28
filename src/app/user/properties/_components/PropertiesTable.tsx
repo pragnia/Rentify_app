@@ -13,8 +13,8 @@ import {
 } from "@nextui-org/react";
 import { Prisma, Property } from "@prisma/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
+import { useRouter } from "next/router";
+ 
 type Props = {
   properties: Prisma.PropertyGetPayload<{
     include: {
@@ -26,7 +26,7 @@ type Props = {
   totalPages: number;
   currentPage: number;
 };
-
+ 
 const PropertiesTable = ({ properties, totalPages, currentPage }: Props) => {
   const router = useRouter();
   return (
@@ -41,11 +41,11 @@ const PropertiesTable = ({ properties, totalPages, currentPage }: Props) => {
         </TableHeader>
         <TableBody>
           {properties.map((item) => (
-            <TableRow>
+            <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.price}</TableCell>
-              <TableCell>{item.type.value}</TableCell>
-              <TableCell>{item.status.value}</TableCell>
+              <TableCell>{item.type?.value ?? 'N/A'}</TableCell>
+              <TableCell>{item.status?.value ?? 'N/A'}</TableCell>
               <TableCell>
                 <div className="flex items-center gap-4">
                   <Tooltip content="Details">
@@ -78,9 +78,9 @@ const PropertiesTable = ({ properties, totalPages, currentPage }: Props) => {
     </div>
   );
 };
-
+ 
 export default PropertiesTable;
-
+ 
 type Props2 = {
   properties: Prisma.PropertyGetPayload<{
     include: {
