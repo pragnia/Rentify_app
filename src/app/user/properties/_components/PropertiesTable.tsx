@@ -40,7 +40,7 @@ const PropertiesTable = ({ properties, totalPages, currentPage }: Props) => {
           <TableColumn>ACTIONS</TableColumn>
         </TableHeader>
         <TableBody>
-          {properties.map((item) => (
+          {properties.map((item: any) => (
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.price}</TableCell>
